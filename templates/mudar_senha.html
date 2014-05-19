@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script>
+	$(document).ready(function() {
+		$("input[type=submit]").on('click', function(e) {
+			if ($("#id_s").val() != $("#id_cs").val()) {
+				alert("A senha não confere.");
+				return false;
+			}
+		});
+	});
+</script>
+
+
+{% if msg %}
+	<div>
+	<p>{{msg}}</p>
+	</div>
+{% endif %}
+<form method="post" action="{% url 'perfil.views.mudar_senha' %}">
+{% csrf_token %}
+
+<fieldset>
+	<label for="id_u">Nome de usuário:</label>
+	<input id="id_u" name="u" type="text" value="{{uname}}">
+	
+	<label for="id_s">Nova senha:</label>
+	<input id="id_s" name="s" type="password">
+	
+	<label for="id_cs">Confirme a nova senha:</label>
+	<input id="id_cs" name="cs" type="password">
+</fieldset>
+
+<input name="t" type="hidden" value="{{token}}">
+
+<input name="submit" type="submit" value="Enviar">
+</form>
+
+{% endblock %}
