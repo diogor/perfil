@@ -1,27 +1,36 @@
-{% extends "base.html" %}
 
-{% block content %}
 
 {% if msg %}
-<p>{{msg}}</p>
+    <div class="alert alert-error">
+    <p>{{msg}}</p>
+    <form action="{% url 'perfil.views.get_token' %}" method="post">
+    {% csrf_token %}
+        <input name="uname" type="hidden" value="{{uname}}">
+        <input type="submit" value="Forgot password">
+    </form>
+    </div>
 {% endif %}
 
 <form method="post" action="{% url 'perfil.views.entrar' %}">
 {% csrf_token %}
-<table>
-<tr>
-	<td>{{ form.username.label_tag }}</td>
-	<td>{{ form.username }}</td>
-</tr>
-<tr>
-	<td>{{ form.password.label_tag }}</td>
-	<td>{{ form.password }}</td>
-</tr>
-</table>
+ <div>
+ <fieldset>
+    	<legend>Sign in</legend>
+               <div>
+               <label>Login</label>
+                {{ form.username }}
+               </div>
+               <div>
+               <label>Password <em>*</em></label>
+               {{ form.password }}
+               </div>
+               <div>
+                <input type="submit" value="login" />
+                <a href="{% url 'perfil.views.registro' %}">Register</a>
+                <input type="hidden" name="next" value="{{ next }}" />
+        </div>
+</fieldset>
+</div>
+    </form>
 
-<input type="submit" value="login" />
-<input type="hidden" name="next" value="{{ next }}" />
-</form>
-<a href="{% url 'perfil.views.registro' %}">Registrar</a>
 
-{% endblock %}

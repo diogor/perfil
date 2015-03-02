@@ -1,12 +1,7 @@
-{% extends "base.html" %}
-
-{% block content %}
 
 {% if msg %}
-	<div>
+	<div class="alert alert-error">
 	<p>{{msg}}</p>
-	<a href="/">voltar ao início</a>
+	<a href="/" class="btn btn-primary">back</a>
 	</div>
 {% endif %}
-
-{% endblock %}

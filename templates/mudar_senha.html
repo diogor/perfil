@@ -1,11 +1,9 @@
-{% extends "base.html" %}
-
-{% block content %}
+<!-- JQuery required.  -->
 <script>
 	$(document).ready(function() {
 		$("input[type=submit]").on('click', function(e) {
 			if ($("#id_s").val() != $("#id_cs").val()) {
-				alert("A senha não confere.");
+				alert("Passwords do not match.");
 				return false;
 			}
 		});
@@ -22,19 +20,17 @@
 {% csrf_token %}
 
 <fieldset>
-	<label for="id_u">Nome de usuário:</label>
+	<label for="id_u">Username:</label>
 	<input id="id_u" name="u" type="text" value="{{uname}}">
 	
-	<label for="id_s">Nova senha:</label>
+	<label for="id_s">New pssword:</label>
 	<input id="id_s" name="s" type="password">
 	
-	<label for="id_cs">Confirme a nova senha:</label>
+	<label for="id_cs">Retype the new password:</label>
 	<input id="id_cs" name="cs" type="password">
 </fieldset>
 
 <input name="t" type="hidden" value="{{token}}">
 
-<input name="submit" type="submit" value="Enviar">
+<input name="submit" type="submit" value="Send">
 </form>
-
-{% endblock %}

@@ -1,23 +1,79 @@
-{% extends "base.html" %}
 
-{% block content %}
+<!-- Jquery required. -->
+<script>
+	$(document).ready(function() {
+		$("input[type=submit]").on('click', function(e) {
+			if ($("#id_password").val() != $("#id_password2").val()) {
+				alert("Passwords do not match.");
+				return false;
+			}
+		});
+	});
+</script>
 <form action="{% url 'perfil.views.registro' %}" method="post">
 	{% csrf_token %}
 	
 	{% if form.non_field_errors %}
-		<div class="error">
+		<div>
 			{{ form.non_field_errors }}
 		</div>
 	{% endif %}
-	{% for field in form %}
-		{{field.label_tag}}
-		{{field}}<br>
-		{% if field.errors %}
-		<div class="error">{{field.errors}}</div>
-		{% endif %}
-	{% endfor %}
 	
+	<p>Mandatory:</p>
+	<div class="form-field">
+		<label for="id_username">Username:</label>
+		<input id="id_username" maxlength="30" name="username" type="text">
+		{% if form.username.errors %}
+			<div>
+				{{form.username.errors}}
+			</div>
+		{% endif %}
+	</div>
+	
+	<div class="form-field">
+		<label for="id_password">Password:</label>
+		<input id="id_password" maxlength="128" name="password" type="password">
+		{% if form.password.errors %}
+			<div>
+				{{form.password.errors}}
+			</div>
+		{% endif %}
+	</div>
+	
+	<div class="form-field">
+		<label for="id_password2">Retype the password:</label>
+		<input id="id_password2" maxlength="128" name="password2" type="password">
+	</div>
+	
+	<p>Optional:</p>
+	<div class="form-field">
+		<label for="id_first_name">First Name:</label>
+		<input id="id_first_name" maxlength="30" name="first_name" type="text">
 		
-	<input type="submit" value="registrar">
+	</div>
+	
+	<div class="form-field">
+		<label for="id_last_name">Last Name:</label>
+		<input id="id_last_name" maxlength="30" name="last_name" type="text">
+		
+	</div>
+	
+	<div class="form-field">
+		<label for="id_email">E-mail:</label>
+		<input id="id_email" maxlength="75" name="email" type="email">
+		{% if form.email.errors %}
+			<div>
+				{{form.email.errors}}
+			</div>
+		{% endif %}
+	</div>
+	
+	<div class="form-field">
+		<label for="id_telefone">Phone #:</label>
+		<input id="id_telefone" maxlength="100" name="telefone" type="text">
+		
+	</div>
+	
+	<p><input type="submit" value="Register"></p>
 </form>
 {% endblock %}
