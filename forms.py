@@ -1,5 +1,5 @@
 from django import forms
-from perfil.models import Perfil
+from .models import Perfil
 
 class PerfilForm(forms.ModelForm):
     class Meta:

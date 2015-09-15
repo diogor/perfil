@@ -1,4 +1,4 @@
-# django-perfil
+# Perfil
 Django app to manage users
 
 ## Install
@@ -7,4 +7,4 @@ Django app to manage users
   - AUTH_USER_MODEL = "perfil.Perfil"
   - LOGIN_URL = "/perfil/login/"
  - add to your main urls.py:
-  - url(r'^perfil/', include('perfil.urls')),
+  - url(r'^perfil/', include('perfil.urls', namespace='perfil')),

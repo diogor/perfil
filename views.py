@@ -5,8 +5,8 @@ from django.shortcuts import render, get_object_or_404 as g404
 from django.http import HttpResponseRedirect as red
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import authenticate, login, logout
-from perfil.forms import PerfilForm, LoginForm
-from perfil.models import Perfil
+from .forms import PerfilForm, LoginForm
+from .models import Perfil
  
 def registro(request):
     form = PerfilForm()

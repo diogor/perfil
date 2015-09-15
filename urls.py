@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('perfil.views',
-    url(r'^register/$', 'registro', name='home'),
+    url(r'^register/$', 'registro', name='registro'),
     url(r'^forgot-password/$', 'mudar_senha', name='mudar_senha'),
     url(r'^get-token/$', 'get_token', name='get_token'),
 )

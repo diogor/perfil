@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser
 
 class Perfil(AbstractUser):
     telefone = models.CharField("Phone number", max_length=100, blank=True)
-    papel = models.ForeignKey('Papel', null=True, verbose_name="Role")
+    papel = models.ForeignKey('Papel', null=True, verbose_name="Role", blank=True)
     token = models.CharField(max_length=30, blank=True)
     
     class Meta:

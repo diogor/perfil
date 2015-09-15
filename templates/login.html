@@ -3,7 +3,7 @@
 {% if msg %}
     <div class="alert alert-error">
     <p>{{msg}}</p>
-    <form action="{% url 'perfil.views.get_token' %}" method="post">
+    <form action="{% url 'perfil:get_token' %}" method="post">
     {% csrf_token %}
         <input name="uname" type="hidden" value="{{uname}}">
         <input type="submit" value="Forgot password">
@@ -11,7 +11,7 @@
     </div>
 {% endif %}
 
-<form method="post" action="{% url 'perfil.views.entrar' %}">
+<form method="post" action="{% url 'perfil:login' %}">
 {% csrf_token %}
  <div>
  <fieldset>
@@ -26,7 +26,7 @@
                </div>
                <div>
                 <input type="submit" value="login" />
-                <a href="{% url 'perfil.views.registro' %}">Register</a>
+                <a href="{% url 'perfil:registro' %}">Register</a>
                 <input type="hidden" name="next" value="{{ next }}" />
         </div>
 </fieldset>

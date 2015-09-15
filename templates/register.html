@@ -10,7 +10,7 @@
 		});
 	});
 </script>
-<form action="{% url 'perfil.views.registro' %}" method="post">
+<form action="{% url 'perfil:registro' %}" method="post">
 	{% csrf_token %}
 	
 	{% if form.non_field_errors %}
